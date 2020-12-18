@@ -103,15 +103,17 @@ const zooAnimals = [
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
 
-  function USApop(animalData){
-    const reduceFunc = function(total,nextItem){
-      total = total + nextItem.population;
-      return total;
-    }
-    
-    let totalPop = animalData.reduce(reduceFunc)
-    return totalPop;
+ function USApop(animalData){
+  function total(total, nextItem){
+    return total + nextItem;
   }
+  function pop(item){
+    return item.population;
+  }
+  return animalData.map(pop).reduce(total)
+}
+
+  
   
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
